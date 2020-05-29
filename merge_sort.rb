@@ -1,29 +1,14 @@
 def merge(arr1, arr2)
-  i = 0
-  j = 0
-  k = 0
   arr = []
-  while i < arr1.length && j < arr2.length
-    if arr1[i] <= arr2[j]
-      arr[k] = arr1[i]
-      k += 1
-      i += 1
+  until arr1.empty? || arr2.empty?
+    if arr1.first < arr2.first
+      arr << arr1.shift
     else
-      arr[k] = arr2[j]
-      k += 1
-      j += 1
+      arr << arr2.shift
     end
   end
-  while i < arr1.length
-    arr[k] = arr1[i]
-    k += 1
-    i += 1
-  end
-  while j < arr2.length
-    arr[k] = arr2[j]
-    k += 1
-    j += 1
-  end
+  arr << arr1.shift until arr1.empty?
+  arr << arr2.shift until arr2.empty?
   arr
 end
 
@@ -35,7 +20,7 @@ def merge_sort(arr)
 end
 
 array = []
-100.times { |i| array << rand(100) }
+40.times { |i| array << rand(100) }
 
 p array
 p merge_sort(array)
