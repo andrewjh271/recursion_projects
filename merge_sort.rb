@@ -14,8 +14,9 @@ end
 
 def merge_sort(arr)
   return arr if arr.length < 2
-  left = merge_sort(arr[0...arr.length / 2])
-  right = merge_sort(arr[arr.length / 2...arr.length])
+  mid = arr.length / 2
+  left = merge_sort(arr.take(mid))
+  right = merge_sort(arr.drop(mid))
   merge(left, right)
 end
 
